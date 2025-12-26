@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "yarn generate-docs && yarn generate-types && yarn run ts-node src/index.ts",
+    "prestart": "yarn generate-docs && yarn generate-types",
+    "generate-docs": "yarn node swagger.js",
+    "generate-types": "yarn run swagger-typescript-api generate -p ./src/swagger-output.json -o ./src -n api-types.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,10 +21,20 @@
   },
   "homepage": "https://github.com/yurykurouski/Warranty-Service#readme",
   "dependencies": {
+    "@azure/service-bus": "^7.9.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mssql": "^12.2.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "@types/swagger-ui-express": "^4.1.8",
+    "swagger-autogen": "^2.23.7",
+    "swagger-typescript-api": "^13.2.16",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
