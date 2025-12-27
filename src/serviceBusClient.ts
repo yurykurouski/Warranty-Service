@@ -1,6 +1,6 @@
 import { ServiceBusClient, ServiceBusSender } from "@azure/service-bus";
 
-const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING_READ;
+const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING_WRITE;
 const queueName = process.env.QUEUE_NAME;
 
 let sbClient: ServiceBusClient | null = null;
@@ -36,3 +36,4 @@ export async function sendMessage(message: WarrantyMessage): Promise<void> {
         throw err;
     }
 }
+

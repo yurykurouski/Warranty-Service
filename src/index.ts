@@ -3,6 +3,7 @@ import express from 'express';
 import { sendMessage } from './serviceBusClient';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './generated/swagger-output.json';
+import { createWarranty } from './db';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -38,9 +39,14 @@ app.put('/api/warranty-claim', async (req: express.Request<{}, {}, WarrantyClaim
             message: 'Warranty claim processed successfully',
             data: { orderID, userID }
         });
-    } catch (error) {
+        createWarranty(orderID, 'Registered');
+    } catch (error: any) {
         console.error('Error processing warranty claim:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        if (error.message === "Timeout waiting for warranty confirmation") {
+            res.status(504).json({ error: 'Gateway Timeout: No confirmation received' });
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 });
 
