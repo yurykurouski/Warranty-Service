@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn generate-docs && yarn generate-types && yarn run ts-node src/index.ts",
-    "prestart": "yarn generate-docs && yarn generate-types",
-    "generate-docs": "yarn node swagger.js",
-    "generate-types": "yarn run swagger-typescript-api generate -p ./src/generated/swagger-output.json -o ./src/generated -n api-types.ts",
+    "start": "npm run generate-docs && npm run generate-types && ts-node src/index.ts",
+    "prestart": "npm run generate-docs && npm run generate-types",
+    "generate-docs": "node swagger.js",
+    "generate-types": "swagger-typescript-api generate -p ./src/generated/swagger-output.json -o ./src/generated -n api-types.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
