@@ -1,7 +1,7 @@
 import { ServiceBusClient, ServiceBusSender } from "@azure/service-bus";
 
-const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING_WRITE;
-const queueName = process.env.QUEUE_NAME;
+const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING_WRITE?.replace(/^"|"$/g, '');
+const queueName = process.env.QUEUE_NAME?.replace(/^"|"$/g, '');
 
 let sbClient: ServiceBusClient | null = null;
 let sender: ServiceBusSender | null = null;
