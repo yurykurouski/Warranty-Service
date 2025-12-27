@@ -1,6 +1,6 @@
 import { ServiceBusClient, ServiceBusSender } from "@azure/service-bus";
 
-const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING;
+const connectionString = process.env.SERVICE_BUS_CONNECTION_STRING_READ;
 const queueName = process.env.QUEUE_NAME;
 
 let sbClient: ServiceBusClient | null = null;
@@ -26,9 +26,11 @@ export async function sendMessage(message: WarrantyMessage): Promise<void> {
     try {
         await sender.sendMessages({
             body: message,
-            contentType: "application/json"
+            contentType: "application/json",
+            replyTo: queueName,
+            subject: "WarrantyRequest"
         });
-        console.log(`Sent message to queue: ${JSON.stringify(message)}`);
+        console.log(`Sent message to queue: ${JSON.stringify(message)} with replyTo: ${queueName}`);
     } catch (err) {
         console.error("ERROR: Failed to send message to Service Bus:", err);
         throw err;

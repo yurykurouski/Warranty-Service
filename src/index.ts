@@ -25,8 +25,8 @@ app.put('/api/warranty-claim', async (req: express.Request<{}, {}, WarrantyClaim
     const { orderID, userID } = req.body;
 
     // Validate that both parameters are present and are integers
-    if (!Number.isInteger(orderID) || !Number.isInteger(userID)) {
-        res.status(400).json({ error: 'orderID and userID must be integers' });
+    if (!Number.isInteger(orderID)) {
+        res.status(400).json({ error: 'orderID must be an integer' });
         return;
     }
 
@@ -48,4 +48,6 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
     console.log(`API URL: http://localhost:${port}/api/warranty-claim`);
     console.log(`Swagger UI: http://localhost:${port}/api-docs`);
+}).on('error', (error) => {
+    console.error('Error starting server:', error.message);
 });

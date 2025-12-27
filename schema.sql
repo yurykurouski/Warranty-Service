@@ -21,17 +21,17 @@ CREATE TABLE [Order] (
 -- Create Basket table
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Basket' and xtype='U')
 CREATE TABLE Basket (
-    basketId INT PRIMARY KEY IDENTITY(1,1),
+    basketID INT PRIMARY KEY IDENTITY(1,1),
     sku NVARCHAR(50),
     price DECIMAL(10, 2),
-    userId NVARCHAR(50),
+    userID NVARCHAR(50),
     FOREIGN KEY (sku) REFERENCES Device(sku)
 );
 
 -- Create Warranty table
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Warranty' and xtype='U')
 CREATE TABLE Warranty (
-    warrantyId INT PRIMARY KEY IDENTITY(1,1),
+    warrantyID INT PRIMARY KEY IDENTITY(1,1),
     orderID INT,
     status NVARCHAR(50),
     item1 NVARCHAR(MAX),
