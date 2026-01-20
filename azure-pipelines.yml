@@ -34,3 +34,23 @@ steps:
   - script: |
       npm run test
     displayName: "Run Tests"
+
+  - script: |
+      npm run build
+    displayName: "Build Project"
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/dist"
+      includeRootFolder: false
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+      replaceExistingArchive: true
+    displayName: "Archive Artifacts"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      ArtifactName: "drop"
+      publishLocation: "Container"
+    displayName: "Publish Artifacts"

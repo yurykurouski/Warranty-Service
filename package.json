@@ -10,7 +10,8 @@
     "generate-types": "swagger-typescript-api generate -p ./src/generated/swagger.json -o ./src/generated -n api-types.ts",
     "type-check": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
