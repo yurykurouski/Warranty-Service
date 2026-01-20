@@ -8,6 +8,8 @@
     "prestart": "npm run tsoa:gen",
     "tsoa:gen": "tsoa spec-and-routes",
     "generate-types": "swagger-typescript-api generate -p ./src/generated/swagger.json -o ./src/generated -n api-types.ts",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,13 +34,17 @@
     "tsoa": "^7.0.0-alpha.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/express": "^5.0.6",
     "@types/mssql": "^9.1.8",
     "@types/node": "^25.0.3",
     "@types/swagger-ui-express": "^4.1.8",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0",
     "swagger-autogen": "^2.23.7",
     "swagger-typescript-api": "^13.2.16",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1"
   }
 }

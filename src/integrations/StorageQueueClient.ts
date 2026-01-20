@@ -7,7 +7,7 @@ export interface StorageQueueMessage {
     orderID?: number;
     userID?: string;
     timestamp: string;
-    details?: any;
+    details?: unknown;
 }
 
 export class StorageQueueIntegration {

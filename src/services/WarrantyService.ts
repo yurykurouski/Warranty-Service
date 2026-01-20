@@ -1,7 +1,4 @@
-import {
-    serviceBusIntegration,
-    WarrantyMessage,
-} from "../integrations/ServiceBusClient";
+import { serviceBusIntegration } from "../integrations/ServiceBusClient";
 import { storageQueueIntegration } from "../integrations/StorageQueueClient";
 import { warrantyRepository } from "../repositories/WarrantyRepository";
 
