@@ -20,6 +20,10 @@ steps:
     displayName: "npm ci"
 
   - script: |
+      npm run tsoa:gen
+    displayName: "Generate Routes & Spec"
+
+  - script: |
       npm run type-check
     displayName: "Type Check"
 
