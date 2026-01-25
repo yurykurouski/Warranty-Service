@@ -80,7 +80,7 @@ stages:
             inputs:
               buildType: 'current'
               artifactName: 'drop'
-              targetPath: '$(Pipeline.Workspace)'
+              targetPath: '$(Pipeline.Workspace)/drop'
             displayName: 'Download Artifacts'
 
           - task: AzureWebApp@1
