@@ -87,6 +87,6 @@ stages:
             inputs:
               azureSubscription: "04034056-2827-46f3-9107-49cb87ba3454"
               appType: "webAppLinux"
-              appName: "warranty-service"
+              appName: "warrantyService"
               package: "$(Pipeline.Workspace)/drop/$(Build.BuildId).zip"
               startUpCommand: "node index.js"
