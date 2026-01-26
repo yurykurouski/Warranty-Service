@@ -46,6 +46,12 @@ steps:
       npm run build
     displayName: "Build Project"
 
+  - script: |
+      cp package.json package-lock.json dist/
+      cd dist
+      npm ci --only=production
+    displayName: "Install Production Dependencies"
+
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(System.DefaultWorkingDirectory)/dist"
